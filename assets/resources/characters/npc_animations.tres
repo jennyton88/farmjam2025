@@ -1,0 +1,173 @@
+[gd_resource type="SpriteFrames" load_steps=28 format=3 uid="uid://deibd0uqns3um"]
+
+[ext_resource type="Texture2D" uid="uid://bs3w0durlfk6r" path="res://assets/art/stand/animalstandfront.png" id="1_34pyg"]
+[ext_resource type="Texture2D" uid="uid://d2870wi7ck44g" path="res://assets/art/characters/village_elder.png" id="1_by3l0"]
+[ext_resource type="Texture2D" uid="uid://c5fcixhggfvrc" path="res://assets/art/stand/animalfrontdownblink.png" id="2_j1hd0"]
+[ext_resource type="Texture2D" uid="uid://oukyt8e5gplq" path="res://assets/art/stand/animalstandfrontdown.png" id="3_w6mcq"]
+[ext_resource type="Texture2D" uid="uid://n4efwexq35gp" path="res://assets/art/stand/animalstandblink.png" id="4_8ga5d"]
+[ext_resource type="Texture2D" uid="uid://b08vxnjt1i2jw" path="res://assets/art/stand/animalwalkflippedback.png" id="5_m1w5d"]
+[ext_resource type="Texture2D" uid="uid://cf1p2vlrspua2" path="res://assets/art/stand/animalstandback.png" id="6_m5eh8"]
+[ext_resource type="Texture2D" uid="uid://igy2qeo2an0r" path="res://assets/art/stand/animalidlemovedown.png" id="7_u0wlg"]
+[ext_resource type="Texture2D" uid="uid://bkxkj7llx7joi" path="res://assets/art/stand/animalidlemovedownflipped.png" id="8_5i2fy"]
+[ext_resource type="Texture2D" uid="uid://bvudpl8a06arn" path="res://assets/art/stand/animalwalkflippedleft.png" id="9_ygfgj"]
+[ext_resource type="Texture2D" uid="uid://bonkf70tecch2" path="res://assets/art/stand/animaleftlblinktailup.png" id="10_u4bdo"]
+[ext_resource type="Texture2D" uid="uid://dwkdwpvth1ylp" path="res://assets/art/stand/animalleftdownblink.png" id="11_uv367"]
+[ext_resource type="Texture2D" uid="uid://wam0t5nty1ly" path="res://assets/art/stand/animalleftdown.png" id="12_x4fnf"]
+[ext_resource type="Texture2D" uid="uid://bu8il1xkxmduh" path="res://assets/art/stand/animalstandright.png" id="13_12p0n"]
+[ext_resource type="Texture2D" uid="uid://bfbfwt271k334" path="res://assets/art/stand/animarightlblinktailup.png" id="14_jgtfg"]
+[ext_resource type="Texture2D" uid="uid://ugjgdr4efhxj" path="res://assets/art/stand/animalrightdownblink.png" id="15_lbsts"]
+[ext_resource type="Texture2D" uid="uid://dx6xq0iwnfd8i" path="res://assets/art/stand/animalrighttailup.png" id="16_a5xnw"]
+[ext_resource type="Texture2D" uid="uid://breptbnxeqmcn" path="res://assets/art/run/animalrunbacktailleft.png" id="17_6dcpy"]
+[ext_resource type="Texture2D" uid="uid://bmh5pwbsxvsg1" path="res://assets/art/run/animaltailright.png" id="18_a371w"]
+[ext_resource type="Texture2D" uid="uid://ctssnxvi2xkgd" path="res://assets/art/run/animalrunfrontleftup.png" id="19_2nyft"]
+[ext_resource type="Texture2D" uid="uid://c88rn0y2md5ji" path="res://assets/art/run/animalrunfrontrightup.png" id="20_fdeat"]
+[ext_resource type="Texture2D" uid="uid://by86l7jpse2pa" path="res://assets/art/run/animalrunleft.png" id="21_rgp3j"]
+[ext_resource type="Texture2D" uid="uid://dy7o4g4c44gc3" path="res://assets/art/run/animalrunleft12.png" id="22_tp0xn"]
+[ext_resource type="Texture2D" uid="uid://ry21qxehucf7" path="res://assets/art/run/animalrunright.png" id="23_2p1rs"]
+[ext_resource type="Texture2D" uid="uid://d2iowpqlpnndk" path="res://assets/art/run/animalrunright12.png" id="24_b2xek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2npdb"]
+atlas = ExtResource("1_by3l0")
+region = Rect2(0, 0, 24, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4von"]
+atlas = ExtResource("1_by3l0")
+region = Rect2(24, 0, 24, 36)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2npdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4von")
+}],
+"loop": true,
+"name": &"Grandma",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_34pyg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_j1hd0")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_w6mcq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_8ga5d")
+}, {
+"duration": 2.0,
+"texture": ExtResource("1_34pyg")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_w6mcq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_m1w5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m5eh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u0wlg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5i2fy")
+}],
+"loop": true,
+"name": &"idle_back",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ygfgj")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_u4bdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ygfgj")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_uv367")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_x4fnf")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_12p0n")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_jgtfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_12p0n")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_lbsts")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_a5xnw")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_6dcpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_a371w")
+}],
+"loop": true,
+"name": &"run_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_2nyft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_fdeat")
+}],
+"loop": true,
+"name": &"run_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_rgp3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_tp0xn")
+}],
+"loop": true,
+"name": &"run_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_2p1rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_b2xek")
+}],
+"loop": true,
+"name": &"run_right",
+"speed": 5.0
+}]

@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://c12dant4y31aw"]
+
+[ext_resource type="Script" path="res://scripts/ui/visual_inventory.gd" id="1_reikr"]
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="2_7v5yc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ba4o"]
+bg_color = Color(0.214103, 0.214103, 0.214103, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah3ck"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[node name="Inventory" type="MarginContainer"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_reikr")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+z_index = -1
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 5
+columns = 5
+
+[node name="SplitMenu" type="Control" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_force_pass_scroll_events = false
+
+[node name="LineEdit" type="LineEdit" parent="SplitMenu"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -32.0
+offset_right = 15.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("2_7v5yc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0ba4o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ba4o")
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+caret_blink = true
+caret_blink_interval = 0.6
+
+[node name="Panel2" type="Panel" parent="SplitMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -24.0
+offset_top = -36.0
+offset_right = 22.0
+offset_bottom = -26.0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_ah3ck")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SplitMenu/Panel2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.5
+offset_top = -13.0
+offset_right = 13.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+theme_override_fonts/normal_font = ExtResource("2_7v5yc")
+bbcode_enabled = true
+text = "How many?"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="text_submitted" from="SplitMenu/LineEdit" to="." method="_on_line_edit_text_submitted"]

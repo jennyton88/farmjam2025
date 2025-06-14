@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvs6l1yw7d2l4"]
+
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="1_6f1l1"]
+[ext_resource type="Script" path="res://scripts/ui/components/textbox.gd" id="1_v4w1p"]
+[ext_resource type="StyleBox" uid="uid://bvweouahv18mq" path="res://assets/resources/ui/textbox.tres" id="2_sg4mk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oso81"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[node name="Textbox" type="MarginContainer"]
+offset_right = 208.0
+offset_bottom = 48.0
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_v4w1p")
+
+[node name="Hover" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_oso81")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("2_sg4mk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_force_pass_scroll_events = false
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("1_6f1l1")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

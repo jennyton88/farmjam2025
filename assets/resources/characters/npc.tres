@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://dpu28lsu4yl2f"]
+
+[ext_resource type="Script" path="res://assets/resources/scripts/character.gd" id="1_l7qgo"]
+
+[resource]
+script = ExtResource("1_l7qgo")
+name = ""
+health = 100
+energy = 100
+money = 500
+type = 0
+subtype = 0
+id = 0

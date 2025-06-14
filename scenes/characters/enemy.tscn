@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://tpymouuktdw"]
+
+[ext_resource type="Script" path="res://scripts/characters/enemy.gd" id="1_btpcy"]
+[ext_resource type="Texture2D" uid="uid://boysq40rh8q7y" path="res://assets/art/characters/cow_monster3flipped.png" id="2_4royg"]
+[ext_resource type="Texture2D" uid="uid://b8sbbpytma3ke" path="res://assets/art/characters/cow_monster3.png" id="3_sn6y5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d23f"]
+size = Vector2(20, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5rle"]
+atlas = ExtResource("2_4royg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnv50"]
+atlas = ExtResource("2_4royg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ju2u"]
+atlas = ExtResource("2_4royg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8068c"]
+atlas = ExtResource("3_sn6y5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kq6w"]
+atlas = ExtResource("3_sn6y5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cxl1"]
+atlas = ExtResource("3_sn6y5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hcdqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5rle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnv50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ju2u")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8068c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kq6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cxl1")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4jx3"]
+radius = 25.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnv53"]
+radius = 171.003
+
+[node name="Enemy" type="CharacterBody2D" groups=["y_sort"]]
+y_sort_enabled = true
+collision_layer = 64
+script = ExtResource("1_btpcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_1d23f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hcdqs")
+animation = &"walk_right"
+offset = Vector2(13, -28)
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_e4jx3")
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource("CircleShape2D_gnv53")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]

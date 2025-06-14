@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://0fbv1vedpoih"]
+
+[ext_resource type="Script" path="res://scripts/characters/npc.gd" id="1_xogah"]
+[ext_resource type="Resource" uid="uid://csfsmr4o0j8sv" path="res://assets/resources/characters/dialogues/npc_test.tres" id="3_6mt5d"]
+[ext_resource type="PackedScene" uid="uid://c12dant4y31aw" path="res://scenes/ui/inventory.tscn" id="5_547rp"]
+[ext_resource type="Script" path="res://assets/resources/scripts/inventory.gd" id="6_jm4p7"]
+[ext_resource type="PackedScene" uid="uid://dtjflnkvhrx56" path="res://scenes/ui/dialogue_box.tscn" id="6_xb4sd"]
+[ext_resource type="Script" path="res://assets/resources/scripts/item_slot.gd" id="7_j36ei"]
+[ext_resource type="SpriteFrames" uid="uid://deibd0uqns3um" path="res://assets/resources/characters/npc_animations.tres" id="7_s4ekp"]
+[ext_resource type="Texture2D" uid="uid://bs3w0durlfk6r" path="res://assets/art/stand/animalstandfront.png" id="7_s4wgh"]
+
+[sub_resource type="Gradient" id="Gradient_qc517"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.65)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hkbwg"]
+gradient = SubResource("Gradient_qc517")
+fill = 1
+fill_from = Vector2(0.5, 0.511468)
+fill_to = Vector2(1, 0.995413)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7a1j"]
+size = Vector2(14, 5.875)
+
+[sub_resource type="Resource" id="Resource_r6nii"]
+script = ExtResource("7_j36ei")
+full = false
+selected = false
+
+[sub_resource type="Resource" id="Resource_8iq3v"]
+script = ExtResource("6_jm4p7")
+id = -10
+type = 1
+full = false
+storage_spaces = 1
+storage = Array[ExtResource("7_j36ei")]([SubResource("Resource_r6nii")])
+curr_selection = 0
+
+[node name="Npc" type="CharacterBody2D" groups=["y_sort"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_xogah")
+npc_dialogue = ExtResource("3_6mt5d")
+npc_texture = ExtResource("7_s4wgh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+y_sort_enabled = true
+texture_filter = 1
+color = Color(0.84104, 0.84104, 0.84104, 1)
+shadow_enabled = true
+shadow_color = Color(0.147672, 0.147672, 0.147672, 0)
+texture = SubResource("GradientTexture2D_hkbwg")
+
+[node name="SolidBody" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 4.0625)
+shape = SubResource("RectangleShape2D_n7a1j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("5_547rp")]
+visible = false
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_bottom = -40.0
+grow_vertical = 2
+inventory = SubResource("Resource_8iq3v")
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("6_xb4sd")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+texture_filter = 1
+sprite_frames = ExtResource("7_s4ekp")
+animation = &"Grandma"
+frame_progress = 0.208104
+centered = false
+offset = Vector2(-8, -30)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("7_s4wgh")
+centered = false
+offset = Vector2(-8, -30)

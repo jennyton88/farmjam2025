@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp62fe7gn64nw"]
+
+[ext_resource type="Texture2D" uid="uid://dty22avr3aerm" path="res://assets/art/furniture/bed.png" id="1_5ww3p"]
+[ext_resource type="Script" path="res://scripts/furniture/bed.gd" id="1_6k0cq"]
+[ext_resource type="PackedScene" uid="uid://dtjflnkvhrx56" path="res://scenes/ui/dialogue_box.tscn" id="3_h612y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auoaw"]
+size = Vector2(24, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c7lc"]
+size = Vector2(24, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxrip"]
+size = Vector2(24, 9)
+
+[node name="Bed" type="Sprite2D"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_5ww3p")
+offset = Vector2(0, 20)
+script = ExtResource("1_6k0cq")
+
+[node name="BedArea" type="Area2D" parent="."]
+position = Vector2(0, 20)
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BedArea"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_auoaw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("3_h612y")]
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2(0, 23)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_4c7lc")
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 19)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(0, 16.5)
+shape = SubResource("RectangleShape2D_dxrip")

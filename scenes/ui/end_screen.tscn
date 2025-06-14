@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://dpxdycj7ay26t"]
+
+[ext_resource type="Script" path="res://scripts/ui/end_screen.gd" id="1_oybuu"]
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="2_twjkc"]
+[ext_resource type="Texture2D" uid="uid://da1tdb55pp85m" path="res://assets/art/endings/win_end.png" id="3_o6oe5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8snwy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tvfdg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_inoq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofg27"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1csrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lstve"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iuv6e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmn5b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmqgt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2g4q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lmed3"]
+
+[node name="EndScreen" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_oybuu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.12549, 0.576471, 0.258824, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.834614, 0.834614, 0.834614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_twjkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8snwy")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tvfdg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_inoq8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ofg27")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1csrk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_lstve")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_iuv6e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_kmn5b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wmqgt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_q2g4q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lmed3")
+text = "Back To Menu"
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_twjkc")
+bbcode_enabled = true
+text = "[center] 
+
+Bad Ending
+The Deities were not satisfied with your offering. the town is now destroyed... Good JOb!
+
+You lose.
+Thank you for playing!"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_o6oe5")
+stretch_mode = 3
+
+[connection signal="button_down" from="VBoxContainer/Back" to="." method="_on_back_button_down"]

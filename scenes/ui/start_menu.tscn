@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=3 uid="uid://flfdgu334sp8"]
+
+[ext_resource type="Script" path="res://scripts/ui/start_menu.gd" id="1_773cm"]
+[ext_resource type="Texture2D" uid="uid://4hcxtsvkddyg" path="res://assets/art/menu/title.png" id="2_n6pkt"]
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="2_u3vic"]
+[ext_resource type="PackedScene" uid="uid://ch7u3tvqcua3t" path="res://scenes/ui/settings_menu.tscn" id="3_ikmy5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8t7n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8yn2p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kh77c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wea40"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ga8x8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0kwg5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sgcdp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xe00t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cbur"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cxqcw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_78v11"]
+
+[node name="StartMenu" type="MarginContainer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_773cm")
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_n6pkt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.834614, 0.834614, 0.834614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_u3vic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a8t7n")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8yn2p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kh77c")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wea40")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ga8x8")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_0kwg5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sgcdp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xe00t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1cbur")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cxqcw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_78v11")
+text = "Play"
+flat = true
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.834614, 0.834614, 0.834614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_u3vic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a8t7n")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8yn2p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kh77c")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wea40")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ga8x8")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_0kwg5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sgcdp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xe00t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1cbur")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cxqcw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_78v11")
+text = "Settings"
+flat = true
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.834614, 0.834614, 0.834614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_u3vic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a8t7n")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8yn2p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kh77c")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wea40")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ga8x8")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_0kwg5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sgcdp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xe00t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1cbur")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cxqcw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_78v11")
+text = "Credits"
+flat = true
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.834614, 0.834614, 0.834614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_u3vic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a8t7n")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8yn2p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kh77c")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wea40")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ga8x8")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_0kwg5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sgcdp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xe00t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1cbur")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cxqcw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_78v11")
+text = "Quit"
+flat = true
+
+[node name="SettingsMenu" parent="." instance=ExtResource("3_ikmy5")]
+visible = false
+layout_mode = 2
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_button_down"]

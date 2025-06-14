@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=3 uid="uid://b184gj3qjibil"]
+
+[ext_resource type="Script" path="res://scripts/world/world.gd" id="1_j576k"]
+[ext_resource type="PackedScene" uid="uid://bhgag53xu5tcl" path="res://scenes/characters/player.tscn" id="2_0d2k8"]
+[ext_resource type="PackedScene" uid="uid://dpxdycj7ay26t" path="res://scenes/ui/end_screen.tscn" id="4_8uikj"]
+[ext_resource type="PackedScene" uid="uid://cd7swj22em8df" path="res://scenes/world/farm.tscn" id="4_hwpvi"]
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="4_po66o"]
+[ext_resource type="PackedScene" uid="uid://btjd0bx2ippux" path="res://scenes/ui/day_end.tscn" id="6_2muuw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_guj2a"]
+bg_color = Color(0.589096, 0.589096, 0.589095, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.185383, 0.185383, 0.185383, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Animation" id="Animation_ci2fx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_623bx"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1.07177),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_22es7"]
+resource_name = "fade_out"
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 9.18958),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xolfs"]
+_data = {
+"RESET": SubResource("Animation_ci2fx"),
+"fade_in": SubResource("Animation_623bx"),
+"fade_out": SubResource("Animation_22es7")
+}
+
+[node name="World" type="Node2D"]
+z_index = -1
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_j576k")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.334462, 0.00126757, 0.577504, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 39.0
+offset_bottom = 15.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_guj2a")
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.5
+offset_top = -13.0
+offset_right = 13.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_po66o")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Fade" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="DayEnd" parent="CanvasLayer" instance=ExtResource("6_2muuw")]
+visible = false
+
+[node name="EndScreen" parent="CanvasLayer" instance=ExtResource("4_8uikj")]
+visible = false
+
+[node name="DayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Farm" parent="." instance=ExtResource("4_hwpvi")]
+visible = false
+z_index = -1
+
+[node name="Player" parent="." instance=ExtResource("2_0d2k8")]
+position = Vector2(78, 199)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xolfs")
+}
+
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]

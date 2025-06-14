@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3rv24pj8qh0d"]
+
+[ext_resource type="Script" path="res://scripts/ui/components/visual_item_slot.gd" id="1_cew83"]
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="2_3rudj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1oy3p"]
+bg_color = Color(1, 1, 1, 0.819608)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pwtv"]
+bg_color = Color(1, 0.886275, 1, 0.627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[node name="ItemSlot" type="MarginContainer"]
+offset_right = 18.0
+offset_bottom = 18.0
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_cew83")
+
+[node name="Selected" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_1oy3p")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pwtv")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_3rudj")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

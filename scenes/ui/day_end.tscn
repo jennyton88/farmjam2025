@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=3 uid="uid://btjd0bx2ippux"]
+
+[ext_resource type="Script" path="res://scripts/ui/day_end.gd" id="1_2cwx6"]
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="1_3d4ia"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_woo8x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qy5cx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqge1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oqfnv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qisvj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwnsp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb4ky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65ncx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5jb4q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvw27"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3a7u"]
+
+[node name="DayEnd" type="MarginContainer"]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_2cwx6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.69, 0.3105, 0.5382, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3d4ia")
+text = "End of Day 1"
+horizontal_alignment = 1
+
+[node name="StartDay" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.834614, 0.834614, 0.834614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_3d4ia")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_woo8x")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qy5cx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jqge1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_oqfnv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qisvj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_lwnsp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fb4ky")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_65ncx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5jb4q")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lvw27")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i3a7u")
+text = "Start Next Day"
+flat = true
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/StartDay" to="." method="_on_start_day_button_down"]

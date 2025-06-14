@@ -1,0 +1,262 @@
+[gd_scene load_steps=26 format=3 uid="uid://bhgag53xu5tcl"]
+
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_e6gpb"]
+[ext_resource type="Resource" uid="uid://ddhqm4pruy23l" path="res://assets/resources/characters/player.tres" id="2_gv3gv"]
+[ext_resource type="Script" path="res://assets/resources/scripts/inventory.gd" id="4_mbqq1"]
+[ext_resource type="PackedScene" uid="uid://ch7u3tvqcua3t" path="res://scenes/ui/settings_menu.tscn" id="5_p65q7"]
+[ext_resource type="SpriteFrames" uid="uid://d2lrxodngqrcc" path="res://assets/resources/characters/player_animations.tres" id="5_pcg2j"]
+[ext_resource type="Script" path="res://assets/resources/scripts/item_slot.gd" id="5_q67ol"]
+[ext_resource type="PackedScene" uid="uid://c12dant4y31aw" path="res://scenes/ui/inventory.tscn" id="5_sui1d"]
+[ext_resource type="FontFile" uid="uid://dt1vo87tvxtki" path="res://assets/fonts/pixels.ttf" id="6_4ineo"]
+[ext_resource type="PackedScene" uid="uid://bdme0mfnrjgyw" path="res://scenes/ui/map.tscn" id="8_jkk54"]
+
+[sub_resource type="Resource" id="Resource_bfyrq"]
+script = ExtResource("5_q67ol")
+full = false
+selected = true
+
+[sub_resource type="Resource" id="Resource_hmsm3"]
+script = ExtResource("5_q67ol")
+full = false
+selected = false
+
+[sub_resource type="Resource" id="Resource_lo4mf"]
+script = ExtResource("5_q67ol")
+full = false
+selected = false
+
+[sub_resource type="Resource" id="Resource_h048s"]
+script = ExtResource("5_q67ol")
+full = false
+selected = false
+
+[sub_resource type="Resource" id="Resource_0c65e"]
+script = ExtResource("5_q67ol")
+full = false
+selected = false
+
+[sub_resource type="Resource" id="Resource_ckrhi"]
+script = ExtResource("5_q67ol")
+full = false
+selected = false
+
+[sub_resource type="Resource" id="Resource_gf6yg"]
+script = ExtResource("5_q67ol")
+full = false
+selected = false
+
+[sub_resource type="Resource" id="Resource_b8u28"]
+script = ExtResource("4_mbqq1")
+id = 0
+type = 0
+full = false
+storage_spaces = 7
+storage = Array[ExtResource("5_q67ol")]([SubResource("Resource_bfyrq"), SubResource("Resource_hmsm3"), SubResource("Resource_lo4mf"), SubResource("Resource_h048s"), SubResource("Resource_0c65e"), SubResource("Resource_ckrhi"), SubResource("Resource_gf6yg")])
+curr_selection = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v75vf"]
+bg_color = Color(0.589096, 0.589096, 0.589095, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.185383, 0.185383, 0.185383, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_qc517"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.65)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hkbwg"]
+gradient = SubResource("Gradient_qc517")
+fill = 1
+fill_from = Vector2(0.5, 0.511468)
+fill_to = Vector2(1, 0.995413)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7a1j"]
+size = Vector2(10, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7843u"]
+radius = 21.0238
+
+[sub_resource type="Animation" id="Animation_jgant"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_khasx"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.188, 0.188, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dchr"]
+_data = {
+"RESET": SubResource("Animation_jgant"),
+"damaged": SubResource("Animation_khasx")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["dropped_items"]]
+y_sort_enabled = true
+collision_mask = 14
+motion_mode = 1
+script = ExtResource("1_e6gpb")
+character_info = ExtResource("2_gv3gv")
+inv = SubResource("Resource_b8u28")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("5_sui1d")]
+top_level = true
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("5_p65q7")]
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 20.0
+offset_right = 39.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v75vf")
+
+[node name="Health" type="RichTextLabel" parent="CanvasLayer/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.5
+offset_top = -13.0
+offset_right = 13.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("6_4ineo")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 39.0
+offset_bottom = 45.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v75vf")
+
+[node name="Energy" type="RichTextLabel" parent="CanvasLayer/Panel2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.5
+offset_top = -13.0
+offset_right = 13.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("6_4ineo")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Panel3" type="Panel" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 39.0
+offset_bottom = 60.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v75vf")
+
+[node name="Money" type="RichTextLabel" parent="CanvasLayer/Panel3"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.5
+offset_top = -13.0
+offset_right = 13.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("6_4ineo")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Map" parent="CanvasLayer" instance=ExtResource("8_jkk54")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.65, 0.65)
+position_smoothing_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+texture_filter = 1
+color = Color(0.84104, 0.84104, 0.84104, 1)
+shadow_color = Color(0.147672, 0.147672, 0.147672, 0)
+texture = SubResource("GradientTexture2D_hkbwg")
+
+[node name="SolidBody" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_n7a1j")
+
+[node name="PickUpZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 54
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpZone"]
+shape = SubResource("CircleShape2D_7843u")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = ExtResource("5_pcg2j")
+animation = &"idle_back"
+centered = false
+offset = Vector2(-11, -30)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5dchr")
+}
+
+[connection signal="create_item_in_world" from="CanvasLayer/Inventory" to="." method="_on_inventory_create_item_in_world"]
+[connection signal="area_entered" from="PickUpZone" to="." method="_on_pick_up_zone_area_entered"]
+[connection signal="area_exited" from="PickUpZone" to="." method="_on_pick_up_zone_area_exited"]
+[connection signal="body_entered" from="PickUpZone" to="." method="_on_pick_up_zone_body_entered"]
+[connection signal="body_exited" from="PickUpZone" to="." method="_on_pick_up_zone_body_exited"]

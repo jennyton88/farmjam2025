@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="CharDialogue" load_steps=2 format=3 uid="uid://csfsmr4o0j8sv"]
+
+[ext_resource type="Script" path="res://assets/resources/characters/dialogues/npc_dialogue.gd" id="1_iun1p"]
+
+[resource]
+script = ExtResource("1_iun1p")
